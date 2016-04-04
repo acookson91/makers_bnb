@@ -7,16 +7,14 @@ require File.join(File.dirname(__FILE__), '..', 'app/app.rb')
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
-require 'capybara'
-require 'capybara/rspec'
-require 'rspec'
+require 'data_mapper'
+require 'dm-postgres-adapter'
 require 'database_cleaner'
 
 Capybara.app = MakersBnb
 
 RSpec.configure do |config|
   config.include Capybara::DSL
-
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
