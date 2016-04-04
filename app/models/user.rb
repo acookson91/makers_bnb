@@ -6,13 +6,12 @@ class User
   include DataMapper::Resource
 
   property :id, Serial
-  property :email, String
-  property :password, String
+  property :email, String, required: true
+  property :password, String, required: true
 
+  validates_presence_of :email
+  validates_uniqueness_of :email
+  validates_presence_of :password
+  validates_format_of :email, as: :email_address
 
 end
-
-
-DataMapper.setup(:default "postgres://localhost/makers_airbnb_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_upgrade!
