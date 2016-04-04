@@ -1,9 +1,7 @@
 require 'sinatra/base'
 
-class makers_bnb < Sinatra::Base
-  get '/' do
-    'Hello makers_bnb!'
-  end
+class MakersBnb < Sinatra::Base
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
