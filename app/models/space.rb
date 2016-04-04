@@ -6,5 +6,4 @@ class Space
 
   property :id, Serial
   property :name, Text
-
 end
