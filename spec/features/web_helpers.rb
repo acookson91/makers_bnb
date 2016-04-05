@@ -2,7 +2,7 @@ def sign_up(email: "p@p.com", password: "password")
   visit 'user/new'
   fill_in :email, with: email
   fill_in :password, with: password
-  click_button "Sign up"
+  click_button "Sign Up"
 end
 
 def create_space_one

@@ -4,7 +4,7 @@ feature 'User management' do
     visit '/user/new'
     fill_in :email, with: 'jon.snow@nightswatch.com'
     fill_in :password, with: 'ghost'
-    click_button 'Sign up'
+    click_button 'Sign Up'
     expect(User.count).to eq(1)
     expect(User.first.email).to eq('jon.snow@nightswatch.com')
   end
@@ -13,7 +13,7 @@ feature 'User management' do
     expect do
       visit '/user/new'
       fill_in :password, with: 'ghost'
-      click_button 'Sign up'
+      click_button 'Sign Up'
     end.not_to change(User, :count)
   end
 
@@ -21,7 +21,7 @@ feature 'User management' do
     expect do
       visit '/user/new'
       fill_in :email, with: 'jon.snow@nightswatch.com'
-      click_button 'Sign up'
+      click_button 'Sign Up'
     end.not_to change(User, :count)
   end
 
@@ -30,7 +30,7 @@ feature 'User management' do
     expect do
       fill_in :email, with: 'jon.snownightswatch.com'
       fill_in :password, with: 'ghost'
-      click_button 'Sign up'
+      click_button 'Sign Up'
     end.not_to change(User, :count)
   end
 
@@ -38,12 +38,12 @@ feature 'User management' do
     visit '/user/new'
     fill_in :email, with: 'jon.snow@nightswatch.com'
     fill_in :password, with: 'ghost'
-    click_button 'Sign up'
+    click_button 'Sign Up'
     visit '/user/new'
     expect do
       fill_in :email, with: 'jon.snow@nightswatch.com'
       fill_in :password, with: 'ghost'
-      click_button 'Sign up'
+      click_button 'Sign Up'
     end.not_to change(User, :count)
   end
 
