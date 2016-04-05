@@ -1,29 +1,27 @@
 feature 'Add new listings' do
   scenario 'page should allow new listings to be created' do
-    visit 'user/new'
-    fill_in :email, with: "p@p.com"
-    fill_in :password, with: "password"
-    click_button "Sign up"
+    sign_up
     visit '/spaces/new'
-    fill_in :name, with: "Space Number One"
-    click_button "Add new space"
+    expect(page).to have_field "name"
+    expect(page).to have_field "desc"
+    expect(page).to have_field "price"
+  end
+
+  scenario 'page should allow new listings to be created' do
+    sign_up
+    visit '/spaces/new'
+    create_space_one
     expect(page).to have_content "Space Number One"
+    expect(page).to have_content "Lovely"
+    expect(page).to have_content 10
   end
 
   scenario 'user can have multiple spaces' do
-    visit 'user/new'
-    fill_in :email, with: "p@p.com"
-    fill_in :password, with: "password"
-    click_button "Sign up"
-    visit 'spaces/new'
-    fill_in :name, with: "Space Number One"
-    click_button "Add new space"
-    visit 'spaces/new'
-    fill_in :name, with: "Space Number Two"
-    click_button "Add new space"
-    user = User.first
+    sign_up
+    create_space_one
+    create_space_two
     expect(page).to have_content "Space Number One"
     expect(page).to have_content "Space Number Two"
-    expect(user.spaces.length).to eq 2
+    expect(User.first.spaces.length).to eq 2
   end
 end
