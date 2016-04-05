@@ -8,6 +8,7 @@ class Space
   property :name, Text
   property :desc, Text
   property :price, Text
+  property :date, String
 
   belongs_to :user
 end
