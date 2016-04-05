@@ -6,6 +6,8 @@ class Space
 
   property :id, Serial
   property :name, Text
+  property :desc, Text
+  property :price, Text
 
   belongs_to :user
 end

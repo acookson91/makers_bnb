@@ -10,6 +10,7 @@ require 'rspec'
 require 'data_mapper'
 require 'dm-postgres-adapter'
 require 'database_cleaner'
+require 'features/web_helpers'
 
 Capybara.app = MakersBnb
 
