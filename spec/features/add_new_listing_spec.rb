@@ -24,4 +24,13 @@ feature 'Add new listings' do
     expect(page).to have_content "Space Number Two"
     expect(User.first.spaces.length).to eq 2
   end
+
+  scenario 'user can book a space' do
+    sign_up
+    create_space_one
+    sign_up(email: "a@a.com", password: '1234')
+    expect(page).to have_button "Book"
+    click_button "Book"
+    expect(page).to have_content "You have booked Space Number One"
+  end
 end
