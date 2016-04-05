@@ -14,5 +14,6 @@ class User
   validates_format_of :email, as: :email_address
 
   has n, :spaces
+  has n, :bookings
 
 end

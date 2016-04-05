@@ -8,7 +8,9 @@ class Space
   property :name, Text
   property :desc, Text
   property :price, Text
-  property :available_date, String
+  property :available_date, Time
+
 
   belongs_to :user
+  has n, :bookings
 end
