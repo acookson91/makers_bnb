@@ -5,7 +5,12 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/spaces' do
-    Space.create(name: params[:name])
+    user = @current_user ||= User.get(session['user_id'])
+    space = Space.new(name: params[:name])
+    user.spaces << space
+    space.save
+    user.save
+    p user.spaces
     redirect '/spaces'
   end
 
