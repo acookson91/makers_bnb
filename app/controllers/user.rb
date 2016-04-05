@@ -1,6 +1,10 @@
 
 class MakersBnb < Sinatra::Base
 
+  get '/' do
+    redirect '/user/new'
+  end
+  
   get '/user/new' do
     @user = User.new
     erb :'user/new'
