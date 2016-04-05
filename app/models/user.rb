@@ -13,4 +13,6 @@ class User
   validates_presence_of :password
   validates_format_of :email, as: :email_address
 
+  has n, :spaces
+
 end
