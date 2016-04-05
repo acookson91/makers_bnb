@@ -1,5 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
 
+
 require 'sinatra/base'
 require 'rubygems'
 require 'data_mapper'
