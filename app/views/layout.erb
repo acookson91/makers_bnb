@@ -1,0 +1,8 @@
+<html>
+  <body>
+    <% if current_user %>
+      <span id='welcome'>Welcome back, <%= current_user.email %></span>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
