@@ -10,7 +10,6 @@ class MakersBnb < Sinatra::Base
     user.spaces << space
     space.save
     user.save
-    p user.spaces
     redirect '/spaces'
   end
 
