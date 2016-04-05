@@ -5,7 +5,7 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/spaces' do
-    user = @current_user ||= User.get(session['user_id'])
+    user = current_user
     space = Space.new(name: params[:name], desc: params[:desc], price: params[:price], available_date: params[:available_date])
     user.spaces << space
     space.save
