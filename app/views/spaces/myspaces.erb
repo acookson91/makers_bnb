@@ -1,6 +1,6 @@
 <a href='https://www.facebook.com/andrewcookson?fref=ts'>Old Myspace</a>
 
-<h1> My space <h1>
+<h1> My space </h1>
 
 <% @spaces.each do |space| %>
   <% space.bookings.each do |booking| %>
@@ -13,6 +13,7 @@
         </form>
         <p class="list-group-item-desc"><%= space.desc %></p>
         <p class="list-group-item-price">£<%= space.price %> per night</p>
+        <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this</p>
       </a>
     <% end %>
   <% end %>
@@ -26,6 +27,8 @@
         <span class="list-group-item-heading"><%= space.name %></span>
         <p class="list-group-item-desc"><%= space.desc %></p>
         <p class="list-group-item-price">£<%= space.price %> per night</p>
+        <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this</p>
+
       </a>
     <% end %>
   <% end %>
