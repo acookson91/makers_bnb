@@ -6,6 +6,7 @@ class Booking
 
   property :id, Serial
   property :booking_date, Text
+  property :status, String, default: "Pending"
 
   belongs_to :user
   belongs_to :space
