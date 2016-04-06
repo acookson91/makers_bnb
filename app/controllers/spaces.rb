@@ -17,4 +17,17 @@ class MakersBnb < Sinatra::Base
     @spaces = Space.all
     erb :'spaces/index'
   end
+
+  get '/spaces/myspaces' do
+    @spaces = current_user.spaces
+    @user = User
+    erb :'spaces/myspaces'
+  end
+
+  post '/approve' do
+    session[:space_id] = params[:space_id]
+    space = Space.get(session[:space_id])
+    space.bookings.update(status: 'Approved')
+    redirect('/spaces/myspaces')
+  end
 end
