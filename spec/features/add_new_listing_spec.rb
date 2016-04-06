@@ -29,8 +29,8 @@ feature 'Add new listings' do
     sign_up
     create_space_one
     sign_up(email: "a@a.com", password: '1234')
-    expect(page).to have_button "Book"
-    click_button "Book"
-    expect(page).to have_content "You have booked Space Number One"
+    expect(page).to have_button "Request booking"
+    click_button "Request booking"
+    expect(page).to have_content "Your request to book Space Number One is pending."
   end
 end
