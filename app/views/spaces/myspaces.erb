@@ -1,6 +1,6 @@
 <a href='https://www.facebook.com/andrewcookson?fref=ts'>Old Myspace</a>
 
-<h1> My space </h1>
+<h1>Pending</h1>
 
 <% @spaces.each do |space| %>
   <% space.bookings.each do |booking| %>
@@ -19,7 +19,7 @@
   <% end %>
 <% end %>
 
-<h1> Approved yo </h1>
+<h1>Approved</h1>
 <% @spaces.each do |space| %>
   <% space.bookings.each do |booking| %>
     <% if booking.status == "Approved" %>
