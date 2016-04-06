@@ -5,6 +5,12 @@ def sign_up(email: "p@p.com", password: "password")
   click_button "Sign Up"
 end
 
+def sign_in(email: "p@p.com", password: "password")
+  fill_in :email, with: email
+  fill_in :password, with: password
+  click_button "Sign In"
+end
+
 def create_space_one
   visit '/spaces/new'
   fill_in :name, with: "Space Number One"
