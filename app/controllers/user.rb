@@ -13,7 +13,7 @@ class MakersBnb < Sinatra::Base
   post '/user' do
     @user = User.new(email: params[:email], password: params[:password])
     if @user.save
-      session['user_id'] = @user.id
+      session["user_id"] = @user.id
       redirect '/spaces'
     else
       erb :'user/new'
