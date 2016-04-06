@@ -13,8 +13,8 @@ class MakersBnb < Sinatra::Base
     # booking.update(available_date: "BOOKED")
     user.bookings << booking
     space.bookings << booking
-    booking.save
-    user.save
+    booking.save!
+    user.save!
     redirect '/booked/confirm'
   end
 
