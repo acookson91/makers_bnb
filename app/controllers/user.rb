@@ -4,7 +4,7 @@ class MakersBnb < Sinatra::Base
   get '/' do
     redirect '/user/new'
   end
-  
+
   get '/user/new' do
     @user = User.new
     erb :'user/new'
@@ -18,6 +18,11 @@ class MakersBnb < Sinatra::Base
     else
       erb :'user/new'
     end
+  end
+
+  post '/sessions' do
+    session['user_id'] = nil
+    redirect '/'
   end
 
 end

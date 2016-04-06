@@ -1,0 +1,177 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
+}
+
+/* Sign Up page */
+
+.form-group{
+  width: 50%;
+}
+
+/* Space list */
+
+.spacelist{
+  margin: 0 auto;
+  text-align: center;
+  width: 75%;
+}
+
+.list-group{
+  font-family: Verdana;
+  padding: 20px;
+}
+
+.list-group-item{
+  padding-top: 0px;
+}
+
+.list-group-button{
+  position: absolute;
+  right:0;top:0;
+  display: inline-block;
+}
+
+.list-group-item-heading{
+  font-size: 30px;
+}
+.list-group p{
+  margin:0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Paul's Old Main Content */
+
+/*#container{
+  margin:auto;
+  background-color: white;
+  font-family: "Courier";
+  text-align: center;
+  min-height:1000px;
+}
+#mainbar{
+  text-align: left;
+}
+#mainbar p{
+  position: relative;
+  margin: auto;
+  font-size:50px;
+  text-align: center;
+  height:80px;
+}
+#sign_up_sign_in{
+  position: absolute;
+  left:30px;top:30px;
+  text-align: left;
+}
+#sign_up_sign_in p{
+  font-size: 14px;
+}
+#sign_up_sign_in form{
+  left:0px;
+  font-size: 12px;
+}
+.signbutton{
+  background-color: #66BDFF;
+  border-radius: 10px;
+  font-family: inherit;
+}
+.signbutton:hover{
+  background-color: #6688FF;
+}
+.spacelist{
+
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left:250px;
+  margin-right: 250px;
+}*/
+
+/* Peep entry box */
+/*#newpeep textarea{
+  margin-top: 20px;
+  font-family: "Courier";
+  font-size: 12px;
+  border:none;
+  border-radius: 5px;
+  width: 200px;
+  height: 50px;
+}*/
+/* Peep list */
+/*#spaces{
+  padding-left: 0;
+  list-style-type: none;
+  display: inline-block;
+}
+#spaces span{
+  font-size: 10px;
+}
+.space{
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 10px;
+  border-style: dotted;
+  border-radius: 50px;
+  border-width: 2px;
+}
+#oddpeep{
+  border-color: #D9F3FF;
+  background-color: #ECB45E;
+}
+#evenpeep{
+  background-color: #FFDFAE;
+}
+#img{
+  height: 25px;
+  width:25px;
+  vertical-align: middle;
+}*/
+
+/* Sign Up */
+/*
+#notice{
+  color: red;
+}*/
