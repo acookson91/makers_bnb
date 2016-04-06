@@ -25,4 +25,18 @@ class MakersBnb < Sinatra::Base
     redirect '/'
   end
 
+  get '/user/signin' do
+    erb :'user/signin'
+  end
+
+  post '/signin' do
+    user = User.authenticate(params[:email], params[:password])
+    if user
+      session[:user_id] = user.id
+      redirect '/spaces'
+    else
+      redirect '/user/signin'
+    end
+  end
+
 end
