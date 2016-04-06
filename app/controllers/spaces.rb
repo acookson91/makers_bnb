@@ -8,8 +8,8 @@ class MakersBnb < Sinatra::Base
     user = current_user
     space = Space.new(name: params[:name], desc: params[:desc], price: params[:price], available_date: params[:available_date])
     user.spaces << space
-    space.save
-    user.save
+    space.save!
+    user.save!
     redirect '/spaces'
   end
 

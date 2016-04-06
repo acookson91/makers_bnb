@@ -1,13 +1,16 @@
+require 'bcrypt'
 require 'data_mapper'
 require 'dm-postgres-adapter'
 
 class User
 
+  attr_reader :password
+
   include DataMapper::Resource
 
   property :id, Serial
   property :email, String, required: true, unique: true
-  property :password, String, required: true
+  property :password_digest, Text, required: true
 
   validates_presence_of :email
   validates_presence_of :password
@@ -16,9 +19,18 @@ class User
   has n, :spaces
   has n, :bookings
 
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
   def self.authenticate(email, password)
     user = first(email: email)
-    user ? user : nil
+    if user && BCrypt::Password.new(user.password_digest) == password #? user : nil
+      user
+    else
+      nil
+    end
   end
 
 end

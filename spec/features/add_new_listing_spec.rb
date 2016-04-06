@@ -13,7 +13,7 @@ feature 'Add new listings' do
     create_space_one
     expect(page).to have_content "Space Number One"
     expect(page).to have_content "Lovely"
-    expect(page).to have_content 10
+    expect(page).to have_content '10'
   end
 
   scenario 'user can have multiple spaces' do
