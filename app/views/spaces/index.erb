@@ -22,16 +22,32 @@
 
   <div class="list-group">
     <% @spaces.each do |space| %>
-      <a href="#" class="list-group-item">
-        <span class="list-group-item-heading"><%= space.name %></span>
-        <form action="/booked" method="post" class="list-group-button">
-          <input type="text" name='space_id' hidden value= <%=space.id %>>
-          <input type="submit" value="Request booking" class="btn btn-primary"></button>
-        </form>
-        <p class="list-group-item-desc"><%= space.desc %></p>
-        <p class="list-group-item-price">£<%= space.price %> per night</p>
-      </a>
+      <% if space.bookings.empty? == false %>
+        <% space.bookings.each do |booking| %>
+          <% if booking.status == "Pending" %>
+            <a href="#" class="list-group-item">
+              <span class="list-group-item-heading"><%= space.name %></span>
+              <form action="/booked" method="post" class="list-group-button">
+                <input type="text" name='space_id' hidden value= <%=space.id %>>
+                <input type="submit" value="Request booking" class="btn btn-primary"></button>
+              </form>
+              <p class="list-group-item-desc"><%= space.desc %></p>
+              <p class="list-group-item-price">£<%= space.price %> per night</p>
+            </a>
+          <% end %>
+        <% end %>
+      <% else %>
+          <a href="#" class="list-group-item">
+            <span class="list-group-item-heading"><%= space.name %></span>
+            <form action="/booked" method="post" class="list-group-button">
+              <input type="text" name='space_id' hidden value= <%=space.id %>>
+              <input type="submit" value="Request booking" class="btn btn-primary"></button>
+            </form>
+            <p class="list-group-item-desc"><%= space.desc %></p>
+            <p class="list-group-item-price">£<%= space.price %> per night</p>
+          </a>
       <% end %>
+    <% end %>
       <!-- <a href="#" class="list-group-item">
         <h4 class="list-group-item-heading">Second List Group Item Heading</h4>
         <p class="list-group-item-text">List Group Item Text</p>

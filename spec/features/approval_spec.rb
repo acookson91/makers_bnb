@@ -11,11 +11,14 @@ feature 'View requests' do
    click_link 'Log In'
    sign_in
    click_link 'My Requests'
-   expect(page).to have_content('My Requests')
-   expect(page.current_path).to eq("/spaces/myspaces")
+   click_button 'Approve'
+   within 'a#approved-group' do
+     expect(page).to have_content "Space Number One"
+   end
+   expect(Booking.first.status).to eq "Approved"
  end
 
- scenario 'Host should see pending requests' do
+ scenario 'Space is removed from list when approved' do
    sign_up
    create_space_one
    click_button "Log Out"
@@ -27,9 +30,10 @@ feature 'View requests' do
    click_link 'Log In'
    sign_in
    click_link 'My Requests'
-   within 'a#pending-group' do
-     expect(page).to have_content("Space Number One")
-   end
+   click_button 'Approve'
+   visit '/spaces'
+   expect(page).to_not have_content("Space Number One")
  end
+
 
 end
