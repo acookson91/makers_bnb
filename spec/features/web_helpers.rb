@@ -11,6 +11,13 @@ def sign_in(email: "p@p.com", password: "password")
   click_button "Sign In"
 end
 
+def sign_up_again_and_again(email: 'a@a.com', password: 'password')
+  visit 'user/new'
+  fill_in :email, with: email
+  fill_in :password, with: password
+  click_button "Sign Up"
+end
+
 def create_space_one
   visit '/spaces/new'
   fill_in :name, with: "Space Number One"

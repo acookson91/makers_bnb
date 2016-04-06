@@ -1,0 +1,32 @@
+<h1> My space <h1>
+
+<a href='http://www.myspace.com'>Old Myspace</a>
+
+<% @spaces.each do |space| %>
+  <% space.bookings.each do |booking| %>
+    <% if booking.status == "Pending" %>
+      <a href="#" class="list-group-item">
+        <span class="list-group-item-heading"><%= space.name %></span>
+        <form action="/approve" method="post" class="list-group-button">
+          <input type="text" name='space_id' hidden value= <%=space.id %>>
+          <input type="submit" value="Approve" class="btn btn-primary"></button>
+        </form>
+        <p class="list-group-item-desc"><%= space.desc %></p>
+        <p class="list-group-item-price">£<%= space.price %> per night</p>
+      </a>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1> Approved yo </h1>
+<% @spaces.each do |space| %>
+  <% space.bookings.each do |booking| %>
+    <% if booking.status == "Approved" %>
+      <a href="#" class="list-group-item">
+        <span class="list-group-item-heading"><%= space.name %></span>
+        <p class="list-group-item-desc"><%= space.desc %></p>
+        <p class="list-group-item-price">£<%= space.price %> per night</p>
+      </a>
+    <% end %>
+  <% end %>
+<% end %>
