@@ -62,9 +62,9 @@ feature 'Approving requests as a host:' do
     within 'a#approved-group' do
     expect(page).to have_content "a@a.com requested this"
     end
-    # within 'a#pending-group' do
-    # expect(page).to have_content "b@b.com restuested this"
-    # end
+    within 'a#pending-group' do
+    expect(page).to have_content "b@b.com requested this"
+    end
     expect(Booking.first.status).to eq "Approved"
 
   end
