@@ -5,10 +5,17 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/spaces' do
+    p params
     user = current_user
-    space = Space.new(name: params[:name], desc: params[:desc], price: params[:price], available_date: params[:available_date])
-    user.spaces << space
+    space = Space.new(name: params[:name], desc: params[:desc], price: params[:price])
+    params[:available_date].each {|x|
+      the_date = Available.first_or_create(single_date: x)
+      space.availables << the_date
+      the_date.spaces << space
+      the_date.save!
+        }
     space.save!
+    user.spaces << space
     user.save!
     redirect '/spaces'
   end
