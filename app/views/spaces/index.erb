@@ -1,8 +1,6 @@
 <div class='spacelist'>
+  <h1 id='title-index-spaces'>Spaces to stay</h1>
 
-  <form action='/spaces/new'>
-    <input type='submit' value='New space'>
-  </form>
 
 <!-- <ul id='spaces'>
   <% @spaces.each do |space| %>
@@ -29,7 +27,7 @@
               <span class="list-group-item-heading"><%= space.name %></span>
               <form action="/booked" method="post" class="list-group-button">
                 <input type="text" name='space_id' hidden value= <%=space.id %>>
-                <input type="submit" value="Request booking" class="btn btn-primary"></button>
+                <input type="submit" value="Request booking" class="btn btn-lg"></button>
               </form>
               <p class="list-group-item-desc"><%= space.desc %></p>
               <p class="list-group-item-price">£<%= space.price %> per night</p>
@@ -41,13 +39,17 @@
             <span class="list-group-item-heading"><%= space.name %></span>
             <form action="/booked" method="post" class="list-group-button">
               <input type="text" name='space_id' hidden value= <%=space.id %>>
-              <input type="submit" value="Request booking" class="btn btn-primary"></button>
+              <input type="submit" value="Request booking" class="btn btn-lg"></button>
             </form>
             <p class="list-group-item-desc"><%= space.desc %></p>
             <p class="list-group-item-price">£<%= space.price %> per night</p>
           </a>
       <% end %>
     <% end %>
+
+    <form action='/spaces/new' >
+      <input type='submit' value='New space' class="btn btn-lg">
+    </form>
       <!-- <a href="#" class="list-group-item">
         <h4 class="list-group-item-heading">Second List Group Item Heading</h4>
         <p class="list-group-item-text">List Group Item Text</p>
