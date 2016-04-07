@@ -1,11 +1,10 @@
 feature "Booking" do
+  include Helpers
   scenario "A user can book another user's space" do
     sign_up
     create_space_one
     click_button 'Log Out'
-    fill_in :email, with: 'b@b.com'
-    fill_in :password, with: 'password'
-    click_button "Sign Up"
+    sign_up_again_and_again(email: 'a@a.com', password: 'password')
     click_button 'View Space'
     expect(page).to have_content('Space Number One')
     click_button "Request booking"
@@ -17,13 +16,12 @@ feature "Booking" do
   scenario "The status of a requested booking defaults to pending" do
     sign_up
     create_space_one
+    # click_button 'Log Out'
     sign_up(email: "b@b.com", password: "password")
-    click_button "View Space"
-    click_button "Request booking"
+    request_booking
     space = Space.first
     user = User.last
     booking = Booking.last
     expect(booking.status).to eq "Pending"
   end
-
 end
