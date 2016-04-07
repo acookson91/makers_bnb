@@ -12,7 +12,7 @@ def sign_in(email: "p@p.com", password: "password")
 end
 
 def sign_up_again_and_again(email: 'a@a.com', password: 'password')
-  visit 'user/new'
+  # visit 'user/new'
   fill_in :email, with: email
   fill_in :password, with: password
   click_button "Sign Up"

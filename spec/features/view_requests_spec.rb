@@ -16,7 +16,7 @@ feature 'View requests' do
    expect(page.current_path).to eq("/spaces/myspaces")
  end
 
- scenario 'Host should see pending requests' do
+ scenario 'Host should see pending requests made on their space' do
    sign_up
    create_space_one
    click_button "Log Out"

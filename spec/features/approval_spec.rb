@@ -1,16 +1,8 @@
-feature 'View requests' do
+feature 'Approving requests as a host:' do
 
- scenario 'Space is removed from list when approved 2' do
-   visit 'user/new'
-   fill_in :email, with: 'p@p.com'
-   fill_in :password, with: 'password'
-   click_button "Sign Up"
-   visit '/spaces/new'
-   fill_in :name, with: "Space Number One"
-   fill_in :desc, with: "Lovely"
-   fill_in :price, with: "10"
-   fill_in :available_date, with: "10/04/16"
-   click_button "Add new space"
+ scenario 'Space is removed from list of available spaces when approved' do
+   sign_up
+   create_space_one
    click_button 'Log Out'
    fill_in :email, with: 'a@a.com'
    fill_in :password, with: 'password'
@@ -19,28 +11,37 @@ feature 'View requests' do
    click_button 'Request booking'
    click_button 'Log Out'
    click_link 'Log In'
-   fill_in :email, with: 'p@p.com'
-   fill_in :password, with: 'password'
-   click_button 'Sign In'
+   sign_in
    click_link 'My Requests'
    click_button 'Approve'
    visit '/spaces'
    expect(page).to_not have_content("Space Number One")
  end
 
+ scenario 'Space appear in approved column when approved' do
+   sign_up
+   create_space_one
+   click_button 'Log Out'
+   fill_in :email, with: 'a@a.com'
+   fill_in :password, with: 'password'
+   click_button "Sign Up"
+   click_button 'View Space'
+   click_button 'Request booking'
+   click_button 'Log Out'
+   click_link 'Log In'
+   sign_in
+   click_link 'My Requests'
+   click_button 'Approve'
+   visit '/spaces/myspaces'
+   within 'a#approved-group' do
+     expect(page).to have_content("Space Number One") end
+   end
+
 
 
   scenario 'Host should be able to see requests 2' do
-    visit 'user/new'
-    fill_in :email, with: 'p@p.com'
-    fill_in :password, with: 'password'
-    click_button "Sign Up"
-    visit '/spaces/new'
-    fill_in :name, with: "Space Number One"
-    fill_in :desc, with: "Lovely"
-    fill_in :price, with: "10"
-    fill_in :available_date, with: "10/04/16"
-    click_button "Add new space"
+    sign_up
+    create_space_one
     click_button 'Log Out'
     fill_in :email, with: 'a@a.com'
     fill_in :password, with: 'password'
@@ -48,16 +49,24 @@ feature 'View requests' do
     click_button 'View Space'
     click_button 'Request booking'
     click_button 'Log Out'
-    click_link 'Log In'
-    fill_in :email, with: 'p@p.com'
+    fill_in :email, with: 'b@b.com'
     fill_in :password, with: 'password'
-    click_button 'Sign In'
+    click_button "Sign Up"
+    click_button 'View Space'
+    click_button 'Request booking'
+    click_button 'Log Out'
+    click_link 'Log In'
+    sign_in
     click_link 'My Requests'
-    click_button 'Approve'
+    first('a#pending-group').click_button('Approve') #need to just click 1
     within 'a#approved-group' do
-    expect(page).to have_content "Space Number One"
+    expect(page).to have_content "a@a.com requested this"
     end
+    # within 'a#pending-group' do
+    # expect(page).to have_content "b@b.com restuested this"
+    # end
     expect(Booking.first.status).to eq "Approved"
+
   end
 
 end
