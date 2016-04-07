@@ -32,11 +32,14 @@ $(document).ready(function() {
       availableDates.push($.datepicker.formatDate('d-m-yy', d));
     }
     console.log(availableDates);
+    var name = $("#spacename").val();
+    var desc = $("#spacedesc").val();
+    var price = $("#spaceprice").val();
 
     $.ajax({
       url: "http://localhost:9292/spaces",
       type: "POST",
-      data: {name: 10}
+      data: {name: name, desc: desc, price: price, available_date: availableDates}
     });
   });
 
