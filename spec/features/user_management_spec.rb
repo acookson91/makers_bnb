@@ -1,15 +1,13 @@
 feature 'User management' do
+  include Helpers
 
   scenario 'user signs up' do
-    visit '/user/new'
-    fill_in :email, with: 'jon.snow@nightswatch.com'
-    fill_in :password, with: 'ghost'
-    click_button 'Sign Up'
+    sign_up
     expect(User.count).to eq(1)
-    expect(User.first.email).to eq('jon.snow@nightswatch.com')
+    expect(User.first.email).to eq("p@p.com")
   end
 
-  scenario 'user can\'t sign up without email' do
+  scenario "user can't sign up without email" do
     expect do
       visit '/user/new'
       fill_in :password, with: 'ghost'
@@ -35,18 +33,9 @@ feature 'User management' do
   end
 
   scenario 'user sign up twice' do
-    visit '/user/new'
-    fill_in :email, with: 'jon.snow@nightswatch.com'
-    fill_in :password, with: 'ghost'
-    click_button 'Sign Up'
-    visit '/user/new'
+    sign_up
     expect do
-      fill_in :email, with: 'jon.snow@nightswatch.com'
-      fill_in :password, with: 'ghost'
-      click_button 'Sign Up'
+      sign_up
     end.not_to change(User, :count)
   end
-
-
-
 end
