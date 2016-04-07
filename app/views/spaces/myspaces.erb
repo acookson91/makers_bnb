@@ -5,14 +5,16 @@
     <% if booking.status == "Pending" %>
       <a href="#" class="list-group-item" id='pending-group'>
         <span class="list-group-item-heading"><%= space.name %></span>
-        <form action="/approve" method="post" class="list-group-button">
-          <input type="text" name='booking_id' hidden value= <%=booking.id %>>
-          <input type="submit" value="Approve" class="btn btn-primary"></button>
-        </form>
-        <form action="/decline" method="post" class="list-group-button">
-          <input type="text" name='booking_id' hidden value= <%=booking.id %>>
-          <input type="submit" value="Decline" class="btn btn-primary"></button>
-        </form>
+        <div class = "btn-group-vertical pull-right">
+          <form action="/approve" method="post" id='approve-button'>
+            <input type="text" name='booking_id' hidden value= <%=booking.id %>>
+            <input type="submit" value="Approve" class="btn btn-primary btn-block"></button>
+          </form>
+          <form action="/decline" method="post" id='decline-button'>
+            <input type="text" name='booking_id' hidden value= <%=booking.id %>>
+            <input type="submit" value="Decline" class="btn btn-primary btn-block"></button>
+          </form>
+        </div>
         <p class="list-group-item-desc"><%= space.desc %></p>
         <p class="list-group-item-price">£<%= space.price %> per night</p>
         <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this.</p>
