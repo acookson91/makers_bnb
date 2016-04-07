@@ -1,5 +1,3 @@
-<a href='https://www.facebook.com/andrewcookson?fref=ts'>Old Myspace</a>
-
 <h1>Pending</h1>
 
 <% @spaces.each do |space| %>
@@ -11,9 +9,13 @@
           <input type="text" name='booking_id' hidden value= <%=booking.id %>>
           <input type="submit" value="Approve" class="btn btn-primary"></button>
         </form>
+        <form action="/decline" method="post" class="list-group-button">
+          <input type="text" name='booking_id' hidden value= <%=booking.id %>>
+          <input type="submit" value="Decline" class="btn btn-primary"></button>
+        </form>
         <p class="list-group-item-desc"><%= space.desc %></p>
         <p class="list-group-item-price">£<%= space.price %> per night</p>
-        <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this</p>
+        <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this.</p>
       </a>
     <% end %>
   <% end %>
@@ -27,7 +29,22 @@
         <span class="list-group-item-heading"><%= space.name %></span>
         <p class="list-group-item-desc"><%= space.desc %></p>
         <p class="list-group-item-price">£<%= space.price %> per night</p>
-        <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this</p>
+        <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this.</p>
+
+      </a>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>Declined</h1>
+<% @spaces.each do |space| %>
+  <% space.bookings.each do |booking| %>
+    <% if booking.status == "Declined" %>
+      <a href="#" class="list-group-item" id='declined-group'>
+        <span class="list-group-item-heading"><%= space.name %></span>
+        <p class="list-group-item-desc"><%= space.desc %></p>
+        <p class="list-group-item-price">£<%= space.price %> per night</p>
+        <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this and you declined.</p>
 
       </a>
     <% end %>
