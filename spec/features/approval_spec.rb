@@ -17,7 +17,7 @@ include Helpers
    expect(page).to_not have_content("Space Number One")
  end
 
- scenario 'Space appear in approved column when approved' do
+ scenario 'Space appears in approved column when approved' do
    sign_up
    create_space_one
    click_button 'Log Out'
@@ -35,7 +35,7 @@ include Helpers
 
 
 
-  scenario 'Host should be able to see requests 2' do
+  scenario 'Host should be able to see requests' do
     sign_up
     create_space_one
     click_button 'Log Out'
@@ -48,12 +48,12 @@ include Helpers
     click_link 'Log In'
     sign_in
     click_link 'My Requests'
-    first('a#pending-group').click_button('Approve') #need to just click 1
+    first('a#pending-group').click_button('Approve')
     within 'a#approved-group' do
-    expect(page).to have_content "a@a.com requested this"
+    expect(page).to have_content "a@a.com requested this."
     end
     within 'a#pending-group' do
-      expect(page).to have_content "b@b.com requested this"
+      expect(page).to have_content "b@b.com requested this."
     end
     expect(Booking.first.status).to eq "Approved"
   end

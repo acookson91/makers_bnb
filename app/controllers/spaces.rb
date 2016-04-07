@@ -39,4 +39,10 @@ class MakersBnb < Sinatra::Base
     booking.update(status: 'Approved')
     redirect('/spaces/myspaces')
   end
+
+  post '/decline' do
+    booking = Booking.get(params[:booking_id])
+    booking.update(status: 'Declined')
+    redirect('/spaces/myspaces')
+  end
 end
