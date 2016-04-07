@@ -2,7 +2,7 @@ feature "Sign In" do
   scenario "A sign in page exists" do
     sign_up
     click_button "Log Out"
-    click_buttin "Log In"
+    click_button "Log In"
     within 'form#signinform' do
       expect(page).to have_field "email"
       expect(page).to have_field "password"
