@@ -35,9 +35,9 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/approve' do
-    session[:space_id] = params[:space_id]
-    space = Space.get(session[:space_id])
-    space.bookings.update(status: 'Approved')
+    session[:booking_id] = params[:booking_id]
+    booking = Booking.get(session[:booking_id])
+    booking.update(status: 'Approved')
     redirect('/spaces/myspaces')
   end
 end
