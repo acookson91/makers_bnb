@@ -18,6 +18,16 @@ class MakersBnb < Sinatra::Base
     erb :'spaces/index'
   end
 
+  post '/space' do
+    session[:space_id] = params[:space_id]
+    redirect('/space')
+  end
+
+  get '/space' do
+    @space = Space.get(session[:space_id])
+    erb :'spaces/space'
+  end
+
   get '/spaces/myspaces' do
     @spaces = current_user.spaces
     @user = User

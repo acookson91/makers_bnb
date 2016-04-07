@@ -32,5 +32,6 @@ def create_space_two
   fill_in :name, with: "Space Number Two"
   fill_in :desc, with: "Awful"
   fill_in :price, with: "1"
+  fill_in :available_date, with: "11/04/16"
   click_button "Add new space"
 end
