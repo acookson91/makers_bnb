@@ -8,7 +8,7 @@ feature 'View requests' do
    click_button "Sign Up"
    click_button "Request booking"
    click_button 'Log Out'
-   click_link 'Log In'
+   click_button 'Log In'
    sign_in
    click_link 'My Requests'
    expect(page).to have_content('My Requests')
@@ -24,7 +24,7 @@ feature 'View requests' do
    click_button "Sign Up"
    click_button "Request booking"
    click_button 'Log Out'
-   click_link 'Log In'
+   click_button'Log In'
    sign_in
    click_link 'My Requests'
    within 'a#pending-group' do

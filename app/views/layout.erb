@@ -29,39 +29,37 @@
         <!-- <li><a href="#">Contact</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <% if current_user == nil %>
-        <li>
-          <form action='/user/new'>
-            <span class="glyphicon glyphicon-log-in btn-lg"></span>
-            <input type='submit' value='Sign up' class="btn btn-primary  btn-lg">
-          </form>
-        </li>
-        <li>
-          <form action='/user/signin'>
-            <span class="glyphicon glyphicon-log-in btn-lg"></span>
-            <input type='submit' value='Sign in' class="btn btn-primary btn-lg">
-          </form>
-        </li>
-      <% else %>
-        <ul class="nav navbar-nav">
+        <% if current_user == nil %>
           <li>
-            <a class='btn btn-primary  btn-lg'>
-              <span class="glyphicon glyphicon-user"></span> Hi, <%= current_user.email %>!
-            </a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <form action='/sessions' method='post'>
-              <span class="glyphicon glyphicon-log-out btn-lg"></span>
-              <input type='hidden' name='_method' value='delete' >
-              <input type='submit' value='Log Out' class="btn btn-primary btn-lg">
+            <form action='/user/new'>
+              <span class="glyphicon glyphicon-log-in btn-lg"></span>
+              <input type='submit' value='Sign up' class="btn btn-primary  btn-lg">
             </form>
           </li>
-      <% end %>
-    </ul>
-
-
+          <li>
+            <form action='/user/signin'>
+              <span class="glyphicon glyphicon-log-in btn-lg"></span>
+              <input type='submit' value='Sign in' class="btn btn-primary btn-lg">
+            </form>
+          </li>
+        <% else %>
+          <ul class="nav navbar-nav">
+            <li>
+              <a class='btn btn-primary  btn-lg'>
+                <span class="glyphicon glyphicon-user"></span> Hi, <%= current_user.email %>!
+              </a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form action='/sessions' method='post'>
+                <span class="glyphicon glyphicon-log-out btn-lg"></span>
+                <input type='hidden' name='_method' value='delete' >
+                <input type='submit' value='Log Out' class="btn btn-primary btn-lg">
+              </form>
+            </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>

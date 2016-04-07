@@ -1,5 +1,7 @@
+require 'byebug'
 feature 'View requests' do
   scenario 'Host should be able to see requests' do
+    # byebug
    sign_up
    create_space_one
    click_button "Log Out"
@@ -8,7 +10,7 @@ feature 'View requests' do
    click_button "Sign Up"
    click_button "Request booking"
    click_button 'Log Out'
-   click_link 'Log In'
+   click_button 'Log In'
    sign_in
    click_link 'My Requests'
    click_button 'Approve'
@@ -27,7 +29,7 @@ feature 'View requests' do
    click_button "Sign Up"
    click_button "Request booking"
    click_button 'Log Out'
-   click_link 'Log In'
+   click_button 'Log In'
    sign_in
    click_link 'My Requests'
    click_button 'Approve'
