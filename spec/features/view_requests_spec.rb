@@ -6,7 +6,8 @@ feature 'View requests' do
    fill_in :email, with: 'a@a.com'
    fill_in :password, with: 'password'
    click_button "Sign Up"
-   click_button "Request booking"
+   click_button 'View Space'
+   click_button 'Request booking'
    click_button 'Log Out'
    click_link 'Log In'
    sign_in
@@ -22,7 +23,8 @@ feature 'View requests' do
    fill_in :email, with: 'a@a.com'
    fill_in :password, with: 'password'
    click_button "Sign Up"
-   click_button "Request booking"
+   click_button 'View Space'
+   click_button 'Request booking'
    click_button 'Log Out'
    click_link 'Log In'
    sign_in
