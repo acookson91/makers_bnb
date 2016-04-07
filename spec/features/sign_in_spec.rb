@@ -1,4 +1,5 @@
 feature "Sign In" do
+  include Helpers
   scenario "A sign in page exists" do
     sign_up
     click_button "Log Out"

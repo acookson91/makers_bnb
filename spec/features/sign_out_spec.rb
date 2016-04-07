@@ -1,4 +1,5 @@
 feature 'user can sign out' do
+  include Helpers
   scenario 'while being signed in' do
     sign_up
     click_button 'Log Out'

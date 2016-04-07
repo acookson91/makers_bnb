@@ -1,0 +1,11 @@
+
+<div class="list-group">
+      <a href="#" class="list-group-item">
+        <span class="list-group-item-heading"><%= @space.name %></span>
+        <form action="/booked" method="post" class="list-group-button">
+          <input type="text" name='space_id' hidden value= <%= @space.id %>>
+          <input type="submit" value="Request booking" class="btn btn-primary">
+        </form>
+        <p class="list-group-item-desc"><%= @space.desc %></p>
+        <p class="list-group-item-price">£<%= @space.price %> per night</p>
+      </a>

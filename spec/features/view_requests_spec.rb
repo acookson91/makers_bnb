@@ -1,12 +1,11 @@
 feature 'View requests' do
+  include Helpers
   scenario 'Host should be able to see requests' do
    sign_up
    create_space_one
    click_button "Log Out"
-   fill_in :email, with: 'a@a.com'
-   fill_in :password, with: 'password'
-   click_button "Sign Up"
-   click_button "Request booking"
+   sign_up_again_and_again
+   request_booking
    click_button 'Log Out'
    click_link 'Log In'
    sign_in
@@ -15,14 +14,12 @@ feature 'View requests' do
    expect(page.current_path).to eq("/spaces/myspaces")
  end
 
- scenario 'Host should see pending requests' do
+ scenario 'Host should see pending requests made on their space' do
    sign_up
    create_space_one
    click_button "Log Out"
-   fill_in :email, with: 'a@a.com'
-   fill_in :password, with: 'password'
-   click_button "Sign Up"
-   click_button "Request booking"
+   sign_up_again_and_again
+   request_booking
    click_button 'Log Out'
    click_link 'Log In'
    sign_in
@@ -31,5 +28,4 @@ feature 'View requests' do
      expect(page).to have_content("Space Number One")
    end
  end
-
 end
