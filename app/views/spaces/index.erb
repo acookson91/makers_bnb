@@ -22,20 +22,8 @@
 
   <div class="list-group">
     <% @spaces.each do |space| %>
-      <% if space.bookings.empty? == false %>
-        <% space.bookings.each do |booking| %>
-          <% if booking.status == "Pending" ||  booking.status == "Declined"%>
-            <a href="#" class="list-group-item">
-              <span class="list-group-item-heading"><%= space.name %></span>
-              <form action="/space" method="post" class="list-group-button">
-                <input type="text" name='space_id' hidden value= <%=space.id %>>
-                <input type="submit" value="View Space" class="btn btn-primary"></button>
-              </form>
-              <p class="list-group-item-desc"><%= space.desc %></p>
-              <p class="list-group-item-price">£<%= space.price %> per night</p>
-            </a>
-          <% end %>
-        <% end %>
+      <% if space.bookings.get("Approved") %>
+            <!-- *blank* -->
       <% else %>
           <a href="#" class="list-group-item">
             <span class="list-group-item-heading"><%= space.name %></span>
