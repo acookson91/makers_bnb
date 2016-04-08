@@ -1,4 +1,4 @@
-feature 'user can sign out' do
+feature 'User sign out:' do
   include Helpers
   scenario 'while being signed in' do
     sign_up

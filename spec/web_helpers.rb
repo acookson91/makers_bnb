@@ -23,7 +23,8 @@ module Helpers
     fill_in :name, with: "Space Number One"
     fill_in :desc, with: "Lovely"
     fill_in :price, with: "10"
-    fill_in :available_date, with: "10/04/16"
+    fill_in :date1, with: "10-4-16"
+    fill_in :date2, with: "15-4-16"
     click_button "Add new space"
   end
 
@@ -32,7 +33,8 @@ module Helpers
     fill_in :name, with: "Space Number Two"
     fill_in :desc, with: "Awful"
     fill_in :price, with: "1"
-    fill_in :available_date, with: "11/04/16"
+    fill_in :date1, with: "12-4-16"
+    fill_in :date2, with: "17-4-16"
     click_button "Add new space"
   end
 

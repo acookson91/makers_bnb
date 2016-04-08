@@ -1,4 +1,4 @@
-feature 'View requests' do
+feature 'Viewing requests:' do
   include Helpers
   scenario 'Host should be able to see requests' do
    sign_up

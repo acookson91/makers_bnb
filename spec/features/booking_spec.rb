@@ -1,4 +1,4 @@
-feature "Booking" do
+feature "Booking:" do
   include Helpers
   scenario "A user can book another user's space" do
     sign_up
