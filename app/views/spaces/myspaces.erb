@@ -4,10 +4,11 @@
   <% space.bookings.each do |booking| %>
     <% if booking.status == "Pending" %>
       <a href="#" class="list-group-item" id='pending-group'>
-        <span class="list-group-item-heading"><%= space.name %></span>
+        <span class="list-group-item-heading"><%= space.name %> - <%= booking.booking_date %></span>
         <div class = "btn-group-vertical pull-right">
           <form action="/approve" method="post" id='approve-button'>
             <input type="text" name='booking_id' hidden value= <%=booking.id %>>
+            <input type="text" name='space_id' hidden value= <%=space.id %>>
             <input type="submit" value="Approve" class="btn btn-primary btn-block"></button>
           </form>
           <form action="/decline" method="post" id='decline-button'>

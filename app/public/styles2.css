@@ -73,6 +73,21 @@ footer {
   margin:0;
 }
 
+#date3{
+  position: absolute;
+  right:30px;;top:70%;
+  display: inline-block;
+  width: 50px;
+}
+/*
+#select-date-text{
+  position: absolute;
+  right:80px;;top:60%;
+  display: inline-block;
+  width: 50px;
+}
+
+*/
 
 
 

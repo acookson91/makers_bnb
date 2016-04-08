@@ -1,17 +1,46 @@
 $(document).ready(function() {
   var availableDates = [];
+  var takenDates = [];
+
+  function setTakenDates(data){
+    takenDates = data;
+  }
+
+  if (window.location.pathname == '/space') {
+    $.getJSON("http://localhost:9292/spacedates", function(data) {
+      //console.log(data);
+      setTakenDates(data);
+      console.log(takenDates);
+    });
+  }
+
+  function disableDay(date){
+    var d = date.getDate();
+    var m = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var dd = d + '-' + m + '-' + y;
+    if($.inArray(dd,takenDates) != -1){
+      return [true];
+    } else {
+      return [false];}
+  }
+
+  function setMinForSecond(date) {
+    $( "#date2" ).datepicker( "option", "minDate", date );
+  }
 
   $("#date1").datepicker({
     dateFormat: 'd-m-yy',
     onSelect: setMinForSecond
   });
 
-  function setMinForSecond(date) {
-    $( "#date2" ).datepicker( "option", "minDate", date );
-  }
-
   $("#date2").datepicker({
     dateFormat: 'd-m-yy',
+  });
+
+  $("#date3").datepicker({
+    dateFormat: 'd-m-yy',
+    beforeShowDay: disableDay
   });
 
   $('#newspacesubmit').click(function() {

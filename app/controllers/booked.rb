@@ -5,12 +5,13 @@ class MakersBnb < Sinatra::Base
     erb :'booked/confirmed'
   end
 
+
   post '/booked' do
     session[:space_id] = params[:space_id]
+    session[:chosen_date] = params[:chosen_date]
     space = Space.get(session[:space_id])
     user = current_user
-    booking = Booking.new(booking_date: space.available_date)
-    # booking.update(available_date: "BOOKED")
+    booking = Booking.new(booking_date: session[:chosen_date])
     user.bookings << booking
     space.bookings << booking
     booking.save!
