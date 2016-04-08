@@ -4,21 +4,7 @@
     <input type='submit' value='New space'>
   </form>
 
-<!-- <ul id='spaces'>
-  <% @spaces.each do |space| %>
-    <% unless space.available_date == "BOOKED" %>
-      <li class='space'>Name: <%= space.name  %><br>
-        Desc: <%= space.desc  %> <br>
-        Price: <%= space.price  %> <br>
-        <form action="/booked" method="post">
-          <input type="text" name='space_id' value= <%=space.id %> >
-          <input type='submit' value='Book'>
-        </form>
-      </li>
-    <% end %>
 
-  <% end %>
-</ul> -->
 
   <div class="list-group">
     <% @spaces.each do |space| %>

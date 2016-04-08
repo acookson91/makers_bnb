@@ -11,6 +11,7 @@ gem 'sinatra-flash'
 gem 'bcrypt'
 gem 'sinatra-partial'
 gem 'rake'
+gem 'pry'
 
 group :test do
   gem 'rspec'
