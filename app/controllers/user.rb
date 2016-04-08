@@ -22,7 +22,7 @@ class MakersBnb < Sinatra::Base
 
   post '/sessions' do
     session['user_id'] = nil
-    redirect '/'
+    redirect '/user/signin'
   end
 
   get '/user/signin' do

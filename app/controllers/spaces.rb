@@ -37,6 +37,7 @@ class MakersBnb < Sinatra::Base
   get '/spaces/myspaces' do
     @spaces = current_user.spaces
     @user = User
+    @bookings = current_user.bookings
     erb :'spaces/myspaces'
   end
 
