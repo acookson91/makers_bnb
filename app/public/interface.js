@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var availableDates = [];
+  console.log("Page loaded")
 
   $("#date1").datepicker({
     dateFormat: 'd-m-yy',
@@ -15,6 +16,7 @@ $(document).ready(function() {
   });
 
   $('#newspacesubmit').click(function() {
+    console.log("Running")
     var startDate = $( "#date1" ).datepicker( "getDate" );
     var endDate = $( "#date2" ).datepicker( "getDate" );
 

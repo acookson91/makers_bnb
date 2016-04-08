@@ -5,8 +5,9 @@ include Helpers
    create_space_one
    click_button 'Log Out'
    sign_up_again_and_again
-  #  click_button 'View Space'
-  #  click_button 'Request booking'
+  p page.current_path
+  expect(page).to have_content('Space Number One')
+  page.find('#ViewSpace').click
   request_booking
    click_button 'Log Out'
    click_link 'Log In'
@@ -15,7 +16,7 @@ include Helpers
    click_button 'Approve'
    visit '/spaces'
    expect(page).to_not have_content("Space Number One")
- end
+end
 
  scenario 'Space appears in approved column when approved' do
    sign_up

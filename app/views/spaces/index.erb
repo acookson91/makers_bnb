@@ -4,22 +4,6 @@
     <input type='submit' value='New space'>
   </form>
 
-<!-- <ul id='spaces'>
-  <% @spaces.each do |space| %>
-    <% unless space.available_date == "BOOKED" %>
-      <li class='space'>Name: <%= space.name  %><br>
-        Desc: <%= space.desc  %> <br>
-        Price: <%= space.price  %> <br>
-        <form action="/booked" method="post">
-          <input type="text" name='space_id' value= <%=space.id %> >
-          <input type='submit' value='Book'>
-        </form>
-      </li>
-    <% end %>
-
-  <% end %>
-</ul> -->
-
   <div class="list-group">
     <% @spaces.each do |space| %>
       <% if space.bookings.get("Approved") %>
@@ -28,8 +12,8 @@
           <a href="#" class="list-group-item">
             <span class="list-group-item-heading"><%= space.name %></span>
             <form action="/space" method="post" class="list-group-button">
-              <input type="text" name='space_id' hidden value= <%=space.id %>>
-              <input type="submit" value="View Space" class="btn btn-primary"></button>
+              <input type="text" name='space_id' hidden value= <%= space.id %>>
+              <input id='ViewSpace' type="submit" value="View Space" class="btn btn-primary">
             </form>
             <p class="list-group-item-desc"><%= space.desc %></p>
             <p class="list-group-item-price">£<%= space.price %> per night</p>

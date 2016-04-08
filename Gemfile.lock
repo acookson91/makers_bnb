@@ -12,6 +12,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.1)
     coveralls (0.8.13)
       json (~> 1.8)
       simplecov (~> 0.11.0)
@@ -71,9 +74,11 @@ GEM
     docile (1.1.5)
     extlib (0.9.16)
     fastercsv (1.5.5)
+    ffi (1.9.10)
     highline (1.7.8)
     json (1.8.3)
     json_pure (1.8.3)
+    method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
@@ -81,6 +86,10 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -102,6 +111,11 @@ GEM
     rspec-sinatra (0.1.2)
       templater (>= 1.0.0)
     rspec-support (3.4.1)
+    rubyzip (1.2.0)
+    selenium-webdriver (2.53.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -115,6 +129,7 @@ GEM
       sinatra (>= 1.0.0)
     sinatra-partial (0.4.0)
       sinatra
+    slop (3.6.0)
     stringex (1.5.1)
     templater (1.0.0)
       diff-lcs (>= 1.1.2)
@@ -126,6 +141,7 @@ GEM
     tilt (2.0.2)
     tins (1.6.0)
     uuidtools (2.1.5)
+    websocket (1.2.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -141,9 +157,11 @@ DEPENDENCIES
   dm-migrations
   dm-postgres-adapter
   dm-transactions
+  pry
   rake
   rspec
   rspec-sinatra
+  selenium-webdriver
   sinatra
   sinatra-flash
   sinatra-partial

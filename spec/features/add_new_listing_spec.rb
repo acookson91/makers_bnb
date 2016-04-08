@@ -8,10 +8,11 @@ feature 'Add new listings:' do
     expect(page).to have_field "price"
   end
 
-  scenario 'page should allow new listings to be created' do
+  scenario 'page should allow new listings to be created', :js => true do
     sign_up
     visit '/spaces/new'
     create_space_one
+    #require 'pry'; binding.pry
     expect(page).to have_content "Space Number One"
     expect(page).to have_content "Lovely"
     expect(page).to have_content '10'

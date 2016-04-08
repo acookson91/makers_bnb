@@ -5,6 +5,7 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/spaces' do
+    require 'pry'; binding.pry
     user = current_user
     space = Space.new(name: params[:name], desc: params[:desc], price: params[:price])
     params[:available_date].each {|x|

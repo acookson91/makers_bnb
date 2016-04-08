@@ -25,7 +25,9 @@ module Helpers
     fill_in :price, with: "10"
     fill_in :date1, with: "10-4-16"
     fill_in :date2, with: "15-4-16"
-    click_button "Add new space"
+    using_wait_time 10 do
+      click_button "Add new space"
+    end
   end
 
   def create_space_two

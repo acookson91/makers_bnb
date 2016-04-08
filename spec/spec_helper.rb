@@ -10,6 +10,7 @@ require 'rspec'
 require 'data_mapper'
 require 'dm-postgres-adapter'
 require 'database_cleaner'
+require 'selenium-webdriver'
 # require 'web_helpers'
 require_relative 'web_helpers'
 
@@ -17,10 +18,15 @@ Capybara.app = MakersBnb
 
 RSpec.configure do |config|
   config.include Capybara::DSL
+  Capybara.javascript_driver = :selenium
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
   end
 
   config.before(:each) do

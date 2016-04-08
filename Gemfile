@@ -13,9 +13,11 @@ gem 'sinatra-partial'
 gem 'rake'
 
 group :test do
+  gem 'pry'
   gem 'rspec'
   gem 'capybara'
   gem 'coveralls', require: false
   gem 'rspec-sinatra'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
 end
