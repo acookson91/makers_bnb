@@ -9,7 +9,7 @@ class Space
   property :name, Text
   property :desc, Text
   property :price, Text
-  property :available_date, Text, default: "1-1-11"
+  # property :available_date, Text, default: "1-1-11"
 
   belongs_to :user
   has n, :bookings

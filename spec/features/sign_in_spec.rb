@@ -1,4 +1,4 @@
-feature "Sign In" do
+feature "User sign In:" do
   include Helpers
   scenario "A sign in page exists" do
     sign_up

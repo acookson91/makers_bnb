@@ -1,4 +1,4 @@
-feature 'Add new listings' do
+feature 'Add new listings:' do
   include Helpers
   scenario 'page should allow new listings to be created' do
     sign_up

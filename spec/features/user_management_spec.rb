@@ -1,4 +1,4 @@
-feature 'User management' do
+feature 'User management:' do
   include Helpers
 
   scenario 'user signs up' do
