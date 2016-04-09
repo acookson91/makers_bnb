@@ -10,7 +10,6 @@ feature 'Add new listings:' do
 
   scenario 'page should allow new listings to be created' do
     sign_up
-    visit '/spaces/new'
     create_space_one
     expect(page).to have_content "Space Number One"
     expect(page).to have_content "Lovely"

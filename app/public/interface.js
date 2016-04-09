@@ -8,9 +8,7 @@ $(document).ready(function() {
 
   if (window.location.pathname == '/space') {
     $.getJSON("http://localhost:9292/spacedates", function(data) {
-      //console.log(data);
       setTakenDates(data);
-      console.log(takenDates);
     });
   }
 
@@ -50,7 +48,6 @@ $(document).ready(function() {
     for(var d = new Date(startDate); d<=new Date(endDate); d.setDate(d.getDate() + 1)){
       availableDates.push($.datepicker.formatDate('d-m-yy', d));
     }
-    console.log(availableDates);
     var name = $("#spacename").val();
     var desc = $("#spacedesc").val();
     var price = $("#spaceprice").val();
