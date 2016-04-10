@@ -52,6 +52,7 @@ module Helpers
 
   def request_booking
     click_button "View Space"
+    fill_in :chosen_date, with: "12-4-16"
     click_button "Request booking"
   end
 
