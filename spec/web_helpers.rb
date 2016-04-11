@@ -19,27 +19,40 @@ module Helpers
   end
 
   def create_space_one
-    visit '/spaces/new'
-    fill_in :name, with: "Space Number One"
-    fill_in :desc, with: "Lovely"
-    fill_in :price, with: "10"
-    fill_in :date1, with: "10-4-16"
-    fill_in :date2, with: "15-4-16"
-    click_button "Add new space"
+    space = Space.new(name: "Space Number One", desc: "Lovely", price: "10")
+    arr = ["10-4-16","11-4-16","12-4-16","13-4-16","14-4-16","15-4-16"]
+    arr.each { |date|
+      the_date = Available.first_or_create(single_date: date)
+      space.availables << the_date
+      the_date.spaces << space
+      the_date.save!
+    }
+    space.save!
+    user = User.first
+    user.spaces << space
+    user.save!
+    visit '/spaces'
   end
 
   def create_space_two
-    visit '/spaces/new'
-    fill_in :name, with: "Space Number Two"
-    fill_in :desc, with: "Awful"
-    fill_in :price, with: "1"
-    fill_in :date1, with: "12-4-16"
-    fill_in :date2, with: "17-4-16"
-    click_button "Add new space"
+    space = Space.new(name: "Space Number Two", desc: "Awful", price: "10")
+    arr = ["12-4-16","13-4-16","14-4-16","15-4-16"]
+    arr.each { |date|
+      the_date = Available.first_or_create(single_date: date)
+      space.availables << the_date
+      the_date.spaces << space
+      the_date.save!
+    }
+    space.save!
+    user = User.first
+    user.spaces << space
+    user.save!
+    visit '/spaces'
   end
 
   def request_booking
     click_button "View Space"
+    fill_in :chosen_date, with: "12-4-16"
     click_button "Request booking"
   end
 
