@@ -1,10 +1,14 @@
-<h1>Pending</h1>
+
+
+<h1> My Space Requests </h1>
+
+<h2>Pending</h2>
 
 <% @spaces.each do |space| %>
   <% space.bookings.each do |booking| %>
     <% if booking.status == "Pending" %>
       <a href="#" class="list-group-item" id='pending-group'>
-        <span class="list-group-item-heading"><%= space.name %> - <%= booking.booking_date %></span>
+        <span class="list-group-item-heading"><%= space.name %> requested for <%= booking.booking_date %></span>
         <div class = "btn-group-vertical pull-right">
           <form action="/approve" method="post" id='approve-button'>
             <input type="text" name='booking_id' hidden value= <%=booking.id %>>
@@ -24,12 +28,12 @@
   <% end %>
 <% end %>
 
-<h1>Approved</h1>
+<h2>Approved</h2>
 <% @spaces.each do |space| %>
   <% space.bookings.each do |booking| %>
     <% if booking.status == "Approved" %>
       <a href="#" class="list-group-item" id='approved-group'>
-        <span class="list-group-item-heading"><%= space.name %></span>
+        <span class="list-group-item-heading"><%= space.name %> requested for <%= booking.booking_date %></span>
         <p class="list-group-item-desc"><%= space.desc %></p>
         <p class="list-group-item-price">£<%= space.price %> per night</p>
         <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this.</p>
@@ -39,17 +43,58 @@
   <% end %>
 <% end %>
 
-<h1>Declined</h1>
+<h2>Declined</h2>
 <% @spaces.each do |space| %>
   <% space.bookings.each do |booking| %>
     <% if booking.status == "Declined" %>
       <a href="#" class="list-group-item" id='declined-group'>
-        <span class="list-group-item-heading"><%= space.name %></span>
+        <span class="list-group-item-heading"><%= space.name %>  requested for <%= booking.booking_date %></span>
         <p class="list-group-item-desc"><%= space.desc %></p>
         <p class="list-group-item-price">£<%= space.price %> per night</p>
         <p class="list-group-item-requestor"><%= @user.get(booking.user_id).email %> requested this and you declined.</p>
 
       </a>
     <% end %>
+  <% end %>
+<% end %>
+
+
+
+<h1> My booking requests </h1>
+
+<h2>Approved</h2>
+<% @bookings.each do |booking| %>
+    <% if booking.status == "Approved" %>
+      <a href="#" class="list-group-item" id='approved-group'>
+        <span class="list-group-item-heading"><%= booking.space.name %> requested for <%= booking.booking_date %></span>
+        <p class="list-group-item-desc"><%= booking.space.desc %></p>
+        <p class="list-group-item-price">£<%= booking.space.price %> per night</p>
+        <p class="list-group-item-requestor"><%= booking.space.user.email %> accepted this</p>
+      </a>
+  <% end %>
+<% end %>
+
+
+<h2>Pending</h2>
+<% @bookings.each do |booking| %>
+    <% if booking.status == "Pending" %>
+      <a href="#" class="list-group-item" id='approved-group'>
+        <span class="list-group-item-heading"><%= booking.space.name %> requested for <%= booking.booking_date %></span>
+        <p class="list-group-item-desc"><%= booking.space.desc %></p>
+        <p class="list-group-item-price">£<%= booking.space.price %> per night</p>
+        <p class="list-group-item-requestor">Were still waiting for a reply from <%= booking.space.user.email %></p>
+      </a>
+  <% end %>
+<% end %>
+
+<h2>Declined</h2>
+<% @bookings.each do |booking| %>
+    <% if booking.status == "Declined" %>
+      <a href="#" class="list-group-item" id='approved-group'>
+        <span class="list-group-item-heading"><%= booking.space.name %> requested for <%= booking.booking_date %></span>
+        <p class="list-group-item-desc"><%= booking.space.desc %></p>
+        <p class="list-group-item-price">£<%= booking.space.price %> per night</p>
+        <p class="list-group-item-requestor"><%= booking.space.user.email %> declined your request.</p>
+      </a>
   <% end %>
 <% end %>
